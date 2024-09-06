@@ -1,0 +1,30 @@
+#Trial: Email
+
+def main():
+    email = input("Email Address: ")
+    if valid_email(email):
+        print("Valid")
+    else:
+        print("Invalid")
+
+def valid_email(x):
+    for index, i in enumerate(x):
+        if i.isspace():
+            return False
+        if i == "@":
+            for index2, j in enumerate(x[index+1:]):
+                if j == "@":
+                    return False
+                if "." not in x[index+1:]:
+                    return False
+                if j == "." :
+                    dot_place = index+index2    #计数定位，@后已经取出来，循环是新的了，但串是固定的
+                    if x[dot_place+1] == ".":
+                        return False
+
+    
+    return True
+
+main()        
+                
+            
